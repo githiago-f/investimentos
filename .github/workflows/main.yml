@@ -18,9 +18,7 @@ jobs:
         echo "ACTIONS_ALLOW_UNSECURE_COMMANDS=true" >> $GITHUB_ENV
     - name: Run install, build and test before deploy
       run: |
-        set PUBLIC_URL=https://ecoffee.dev.br
         yarn
-        yarn test
         yarn build
     - name: Run deploy
       uses: JamesIves/github-pages-deploy-action@3.5.7
