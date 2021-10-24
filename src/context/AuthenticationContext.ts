@@ -1,6 +1,4 @@
 import { UsuarioResponseDTO } from "@domain";
-import { Context, useContext } from "react";
+import { createContext } from "react";
 
-type CtxType = { user: UsuarioResponseDTO };
-
-export const AuthenticationContext = useContext<CtxType>({} as Context<CtxType>);
+export const AuthenticationContext = createContext({} as { user?: UsuarioResponseDTO });

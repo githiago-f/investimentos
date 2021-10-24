@@ -1,9 +1,18 @@
 import { Input } from "components/Input";
 import { Link } from "components/Link";
-import { useHomeHooks } from "./hooks";
+import { useLoginHooks } from "./hooks";
 
-export const Home = () => {
-  const { updateForm, submitLoginForm } = useHomeHooks();
+type Props = {
+  onAuthenticate: (user: U)
+}
+
+export const Login = () => {
+  const { 
+    updateForm,
+    submitLoginForm,
+    formData,
+    error
+  } = useLoginHooks();
   
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -21,11 +30,11 @@ export const Home = () => {
             <Input
               id="login"
               name="login"
-              type="email"
-              autoComplete="email"
+              type="username"
               required
-              title="Email address"
+              title="Login"
               onChange={updateForm}
+              value={formData.login}
             />
             <Input
               id="senha"
@@ -34,11 +43,12 @@ export const Home = () => {
               required
               title="Password"
               onChange={updateForm}
+              value={formData.senha}
             />
           </div>
 
-          <div className="flex items-center justify-center">
-            <Link title="Forgot your password?" to="#" />
+          <div hidden={!error.hasError}>
+            <p className="text-red-600">{error.message}</p>
           </div>
 
           <div>
@@ -52,6 +62,10 @@ export const Home = () => {
               </span>
               Sign in
             </button>
+          </div>
+
+          <div className="flex items-center justify-center">
+            <Link title="Don't have an account?" to="/register" />
           </div>
         </div>
         <div>Ícones feitos por <a href="https://www.flaticon.com/br/autores/iconpro86" title="Iconpro86">Iconpro86</a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>

@@ -16,7 +16,7 @@ declare module "@domain" {
   };
 
   type CredenciaisRequestDTO = {
-
-  }
-
+    login: string;
+    senha: string;
+  };
 };
