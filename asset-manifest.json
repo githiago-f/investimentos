@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/investimentos/static/css/main.6d51a0f6.chunk.css",
+    "main.js": "/investimentos/static/js/main.08bec6f6.chunk.js",
+    "main.js.map": "/investimentos/static/js/main.08bec6f6.chunk.js.map",
+    "runtime-main.js": "/investimentos/static/js/runtime-main.a6e4c800.js",
+    "runtime-main.js.map": "/investimentos/static/js/runtime-main.a6e4c800.js.map",
+    "static/js/2.f4d7d63c.chunk.js": "/investimentos/static/js/2.f4d7d63c.chunk.js",
+    "static/js/2.f4d7d63c.chunk.js.map": "/investimentos/static/js/2.f4d7d63c.chunk.js.map",
+    "static/js/3.fbebec33.chunk.js": "/investimentos/static/js/3.fbebec33.chunk.js",
+    "static/js/3.fbebec33.chunk.js.map": "/investimentos/static/js/3.fbebec33.chunk.js.map",
+    "index.html": "/investimentos/index.html",
+    "static/css/main.6d51a0f6.chunk.css.map": "/investimentos/static/css/main.6d51a0f6.chunk.css.map",
+    "static/js/2.f4d7d63c.chunk.js.LICENSE.txt": "/investimentos/static/js/2.f4d7d63c.chunk.js.LICENSE.txt",
+    "static/media/investimento.png": "/investimentos/static/media/investimento.32f2c201.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a6e4c800.js",
+    "static/js/2.f4d7d63c.chunk.js",
+    "static/css/main.6d51a0f6.chunk.css",
+    "static/js/main.08bec6f6.chunk.js"
+  ]
+}
