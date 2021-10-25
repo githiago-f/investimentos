@@ -2,13 +2,15 @@ import React, { FC } from 'react';
 import { Input } from 'components/Input';
 import { Link } from 'components/Link';
 import { useLoginHooks } from './hooks';
+import { Redirect } from 'react-router';
 
 export const Login: FC<{}> = () => {
   const {
     updateForm,
     submitLoginForm,
     formData,
-    error
+    error,
+    redirect
   } = useLoginHooks();
 
   return (
@@ -59,6 +61,7 @@ export const Login: FC<{}> = () => {
               </span>
               Sign in
             </button>
+            {redirect && <Redirect to='/dashboard' />}
           </div>
 
           <div className="flex items-center justify-center">

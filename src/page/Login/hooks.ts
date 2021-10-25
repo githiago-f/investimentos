@@ -1,4 +1,5 @@
-import { CredenciaisRequestDTO, UsuarioResponseDTO } from '@domain';
+import { CredenciaisRequestDTO, UsuarioResponseDTO } from '@domain/user';
+import { login } from 'actions/login';
 import { axios } from 'config/axios.setup';
 import { ChangeEvent, useCallback, useState } from 'react';
 
@@ -8,6 +9,7 @@ export const useLoginHooks = () => {
     senha: ''
   } as CredenciaisRequestDTO);
   const [error, setError] = useState({ hasError: false, message: ''});
+  const [redirect, setRedirect] = useState(false);
 
   const updateForm = useCallback(({target}: ChangeEvent<HTMLInputElement>) => {
     const data = {...formData, [target.name]: target.value };
@@ -17,13 +19,11 @@ export const useLoginHooks = () => {
   const submitLoginForm = useCallback(() => {
     axios.post<UsuarioResponseDTO>('/api/usuarios/auth', formData)
       .then(({data}) => {
-        localStorage.setItem('investimentos@user', JSON.stringify(data));
-
+        login(data);
+        setRedirect(true);
       }).catch(e => {
-        setError({
-          hasError: true,
-          message: e.message
-        });
+        const message = e.response.data?.errors;
+        setError({ hasError: true, message: message.join('\n') });
       });
   }, [formData]);
 
@@ -31,6 +31,7 @@ export const useLoginHooks = () => {
     updateForm,
     submitLoginForm,
     error,
-    formData
+    formData,
+    redirect
   };
 };
