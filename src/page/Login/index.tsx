@@ -1,19 +1,16 @@
-import { Input } from "components/Input";
-import { Link } from "components/Link";
-import { useLoginHooks } from "./hooks";
+import React, { FC } from 'react';
+import { Input } from 'components/Input';
+import { Link } from 'components/Link';
+import { useLoginHooks } from './hooks';
 
-type Props = {
-  onAuthenticate: (user: U)
-}
-
-export const Login = () => {
-  const { 
+export const Login: FC<{}> = () => {
+  const {
     updateForm,
     submitLoginForm,
     formData,
     error
   } = useLoginHooks();
-  
+
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">

@@ -1,6 +1,6 @@
-import { ChangeEvent, useCallback, useState } from "react";
-import { UsuarioRequestDTO } from "@domain";
-import { axios } from "config/axios.setup";
+import { ChangeEvent, useCallback, useState } from 'react';
+import { UsuarioRequestDTO } from '@domain';
+import { axios } from 'config/axios.setup';
 
 export const useRegisterHooks = () => {
   const [formData, setFormData] = useState({

@@ -4,14 +4,16 @@ import 'assets/css/index.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {Login} from 'page/Login';
 import { Register } from 'page/Register';
-import { AuthenticationContext } from 'context/AuthenticationContext';
+import { AuthenticationContext, useAuthenticationHooks } from 'context/AuthenticationContext';
 
 function AppRouter() {
+  const authState = useAuthenticationHooks();
+
   return (
-    <AuthenticationContext.Provider value={{}}>
+    <AuthenticationContext.Provider value={authState}>
       <Router basename="/investimentos">
         <Route path="/" exact>
-          <Login onAuthenticate={} />
+          <Login />
         </Route>
         <Route path="/register" component={Register} />
       </Router>

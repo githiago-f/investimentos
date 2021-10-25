@@ -1,7 +1,7 @@
-import React from "react";
-import { Input } from "components/Input";
-import { Link } from "components/Link";
-import { useRegisterHooks } from "./hooks";
+import React from 'react';
+import { Input } from 'components/Input';
+import { Link } from 'components/Link';
+import { useRegisterHooks } from './hooks';
 
 export const Register = () => {
   const { formData, submitRegisterForm, updateForm } = useRegisterHooks();
@@ -76,7 +76,7 @@ export const Register = () => {
               Sign up
             </button>
           </div>
-          
+
           <div className="flex items-center justify-center">
             <Link title="Already have an account?" to="/" />
           </div>
@@ -85,4 +85,4 @@ export const Register = () => {
       </div>
     </div>
   );
-}
+};

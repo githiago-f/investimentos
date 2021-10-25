@@ -19,12 +19,6 @@
     "test": "craco test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "npm:@tailwindcss/postcss7-compat",
     "@testing-library/jest-dom": "^5.11.4",

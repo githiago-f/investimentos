@@ -1,4 +1,4 @@
-declare module "@domain" {
+declare module '@domain' {
   type UsuarioResponseDTO = {
     dataCadastro: string;
     email: string;
@@ -19,4 +19,4 @@ declare module "@domain" {
     login: string;
     senha: string;
   };
-};
+}
