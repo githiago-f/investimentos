@@ -1,9 +1,10 @@
 import { ChangeEvent, useCallback, useState } from 'react';
 import { UsuarioRequestDTO, UsuarioResponseDTO } from '@domain/user';
 import { axios } from 'config/axios.setup';
-import { login } from 'actions/login';
+import { useAuthActions } from 'actions/auth-actions';
 
 export const useRegisterHooks = () => {
+  const { login } = useAuthActions();
   const [formData, setFormData] = useState({
     email: '',
     login: '',
@@ -11,7 +12,6 @@ export const useRegisterHooks = () => {
     senha: '',
     senhaConfirmacao: ''
   } as UsuarioRequestDTO);
-  const [redirect, setRedirect] = useState(false);
 
   const updateForm = useCallback(({target}: ChangeEvent<HTMLInputElement>) => {
     const data = {...formData, [target.name]: target.value };
@@ -22,14 +22,12 @@ export const useRegisterHooks = () => {
     axios.post<UsuarioResponseDTO>('/api/usuarios', formData)
       .then(({data}) => {
         login(data);
-        setRedirect(true);
       }).catch(console.log);
   }, [formData]);
 
   return {
     formData,
     updateForm,
-    submitRegisterForm,
-    redirect
+    submitRegisterForm
   };
 };

@@ -9,8 +9,7 @@ export const Login: FC<{}> = () => {
     updateForm,
     submitLoginForm,
     formData,
-    error,
-    redirect
+    error
   } = useLoginHooks();
 
   return (
@@ -61,7 +60,6 @@ export const Login: FC<{}> = () => {
               </span>
               Sign in
             </button>
-            {redirect && <Redirect to='/dashboard' />}
           </div>
 
           <div className="flex items-center justify-center">
