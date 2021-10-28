@@ -2,8 +2,9 @@ import React from 'react';
 import { Input } from 'components/Input';
 import { Link } from 'components/Link';
 import { useRegisterHooks } from './hooks';
+import { withRouter } from 'react-router';
 
-export const Register = () => {
+const Register = () => {
   const { formData, submitRegisterForm, updateForm } = useRegisterHooks();
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -78,7 +79,7 @@ export const Register = () => {
           </div>
 
           <div className="flex items-center justify-center">
-            <Link title="Already have an account?" to="/" />
+            <Link title="Already have an account?" to="/login" />
           </div>
         </div>
         <div>Ícones feitos por <a href="https://www.flaticon.com/br/autores/iconpro86" title="Iconpro86">Iconpro86</a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>
@@ -86,3 +87,5 @@ export const Register = () => {
     </div>
   );
 };
+
+export default withRouter(Register);

@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { Container } from 'components/Container';
 import { AuthenticationContext } from 'context/AuthenticationContext';
+import { withRouter } from 'react-router';
 
-export const Dashboard = () => {
+const Dashboard = () => {
   const { user } = useContext(AuthenticationContext);
 
   return (
@@ -11,3 +12,5 @@ export const Dashboard = () => {
     </Container>
   );
 };
+
+export default withRouter(Dashboard);

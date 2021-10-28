@@ -2,9 +2,8 @@ import React, { FC } from 'react';
 import { Input } from 'components/Input';
 import { Link } from 'components/Link';
 import { useLoginHooks } from './hooks';
-import { Redirect } from 'react-router';
 
-export const Login: FC<{}> = () => {
+const Login: FC<{}> = () => {
   const {
     updateForm,
     submitLoginForm,
@@ -71,3 +70,5 @@ export const Login: FC<{}> = () => {
     </div>
   );
 };
+
+export default Login;

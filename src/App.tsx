@@ -1,25 +1,25 @@
 import React from 'react';
+import { Route, BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { AuthenticationContext, useAuthenticationHooks } from 'context/AuthenticationContext';
+
 import 'assets/css/index.css';
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Login } from 'page/Login';
-import { Register } from 'page/Register';
-import { AuthenticationContext, useAuthenticationHooks } from 'context/AuthenticationContext';
-import { Dashboard } from 'page/Dashboard';
+import Login from 'page/Login';
+import Register from 'page/Register';
+import Dashboard from 'page/Dashboard';
 
 function AppRouter() {
-  const authState = useAuthenticationHooks();
+  const {redirect,user} = useAuthenticationHooks();
 
   return (
-    <AuthenticationContext.Provider value={authState}>
-      <Router basename="/investimentos">
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/" exact component={Dashboard} />
-        </Switch>
-      </Router>
-    </AuthenticationContext.Provider>
+    <Router basename="/investimentos">
+      <AuthenticationContext.Provider value={{user}}>
+        <Route path="/" exact component={Dashboard} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        {redirect && <Redirect to={'/login'}/>}
+      </AuthenticationContext.Provider>
+    </Router>
   );
 }
 

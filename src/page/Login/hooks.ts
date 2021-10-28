@@ -20,7 +20,7 @@ export const useLoginHooks = () => {
     axios.post<UsuarioResponseDTO>('/api/usuarios/auth', formData)
       .then(({data}) => { login(data); })
       .catch(e => {
-        const message = e.response.data?.errors;
+        const message = e.response.data?.errors || ['500'];
         setError({ hasError: true, message: message.join('\n') });
       });
   }, [formData]);
