@@ -1,0 +1,5 @@
+.left-bar {
+  @apply w-2 bg-red-600 mr-5 rounded-l-lg;
+  margin-top: -20px;
+  margin-bottom: -20px;
+}
