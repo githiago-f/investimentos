@@ -7,6 +7,7 @@ import 'assets/css/index.css';
 import Login from 'page/Login';
 import Register from 'page/Register';
 import Dashboard from 'page/Dashboard';
+import { ReservedRightsIcons } from 'components/ReservedRightsIcons';
 
 function AppRouter() {
   const {redirect,user} = useAuthenticationHooks();
@@ -19,6 +20,7 @@ function AppRouter() {
         <Route path="/register" component={Register} />
         {redirect && <Redirect to={'/login'}/>}
       </AuthenticationContext.Provider>
+      <ReservedRightsIcons/>
     </Router>
   );
 }

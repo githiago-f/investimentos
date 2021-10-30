@@ -82,7 +82,6 @@ const Register = () => {
             <Link title="Already have an account?" to="/login" />
           </div>
         </div>
-        <div>Ícones feitos por <a href="https://www.flaticon.com/br/autores/iconpro86" title="Iconpro86">Iconpro86</a> from <a href="https://www.flaticon.com/br/" title="Flaticon">www.flaticon.com</a></div>
       </div>
     </div>
   );

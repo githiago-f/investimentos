@@ -1,5 +1,6 @@
 import { UsuarioResponseDTO } from '@domain/user';
 import { createContext, useEffect, useState } from 'react';
+import { either } from 'utils/stringEither';
 
 export const AuthenticationContext = createContext({} as { user?: UsuarioResponseDTO });
 
@@ -9,11 +10,11 @@ export const useAuthenticationHooks = () => {
 
   useEffect(() => {
     const jsonUser = localStorage.getItem('investimentos@user');
-    const user = jsonUser && JSON.parse(jsonUser || '{}');
+    const user = jsonUser && JSON.parse(jsonUser);
     setUser(user);
 
     if(!user) {
-      if(window.location.pathname !== '/investimentos/login') {
+      if(!either(window.location.pathname, '/investimentos/login', '/investimentos/register')) {
         setRedirect(true);
       }
     }
