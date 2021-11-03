@@ -2,7 +2,7 @@ import { UsuarioResponseDTO } from '@domain/user';
 import { createContext, useEffect, useState } from 'react';
 import { either } from 'utils/stringEither';
 
-export const AuthenticationContext = createContext({} as { user?: UsuarioResponseDTO });
+export const AuthenticationContext = createContext({} as { user: UsuarioResponseDTO });
 
 export const useAuthenticationHooks = () => {
   const [user, setUser] = useState({} as UsuarioResponseDTO);
