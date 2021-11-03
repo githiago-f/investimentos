@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Container } from 'components/Container';
-import { AuthenticationContext } from 'context/AuthenticationContext';
 import { withRouter } from 'react-router';
 import { Card } from 'components/Card';
 
 import fixedInterest from 'assets/img/interest-rate.png';
 import { Transaction } from 'components/Transaction';
+import { useDashboardHooks } from './hooks';
 
 const Dashboard = () => {
-  const { user } = useContext(AuthenticationContext);
+  const data = useDashboardHooks();
 
   return (
     <Container>
@@ -21,7 +21,7 @@ const Dashboard = () => {
         <Card
           icon={fixedInterest}
           title='Renda fixa'
-          value={'R$ 1.000,00'}
+          value={data.totalFixedInterest}
         />
         <Card
           icon={fixedInterest}
