@@ -1,11 +1,12 @@
 import React from 'react';
 import { Container } from 'components/Container';
 import { withRouter } from 'react-router';
-import { Card } from 'components/Card';
-
-import fixedInterest from 'assets/img/interest-rate.png';
-import { Transaction } from 'components/Transaction';
 import { useDashboardHooks } from './hooks';
+import { toBRL } from 'utils/toBRL';
+import { Card } from 'components/Card';
+import ir from 'assets/img/interest-rate.png';
+import { PortfolioSelectedContext } from 'context/PortfolioSelectedContext';
+import { AddCard } from 'components/AddCard';
 
 const Dashboard = () => {
   const data = useDashboardHooks();
@@ -13,31 +14,26 @@ const Dashboard = () => {
   return (
     <Container>
       <h2 className="text-3xl font-bold">
-        <small className="font-medium">Total investido</small>
+        <small className="font-medium">Patrimônio consolidado</small>
         <br/>
-        R$ 1.000.000,00
+        {toBRL(data.consolidatedAssets)}
       </h2>
-      <div className="mt-10 grid gap-5 grid-cols-2">
-        <Card
-          icon={fixedInterest}
-          title='Renda fixa'
-          value={data.totalFixedInterest}
-        />
-        <Card
-          icon={fixedInterest}
-          title='Renda variavel'
-          value={'R$ 1.000,00'}
-        />
-      </div>
-      <div className="mt-5">
-        <div className="sm:w-6/12">
-          <h3 className="text-xl font-bold pb-5">Transações</h3>
-          <Transaction/>
-          <Transaction/>
-          <Transaction/>
-          <Transaction/>
+      <h3 className="text-xl my-5 font-bold">Carteiras</h3>
+      <PortfolioSelectedContext.Provider value={{portfolio: data.currentPortfolio}}>
+        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
+          {data.portfolios.map((i, idx) => (
+            <Card
+              portfolio={i}
+              icon={ir}
+              title={i.descricao}
+              transactions={i.transacoes}
+              onClick={data.selectPortfolio}
+              key={idx}
+            />
+          ))}
+          <AddCard onClick={()=> {}}/>
         </div>
-      </div>
+      </PortfolioSelectedContext.Provider>
     </Container>
   );
 };
