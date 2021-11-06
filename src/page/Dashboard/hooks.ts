@@ -12,7 +12,7 @@ export const useDashboardHooks = () => {
   const [portfolios, setPortfolios] = useState([] as CarteiraResponseDTO[]);
 
   useEffect(() => {
-    if(!user.id) {
+    if(!user?.id) {
       return;
     }
     pService.searchPortfolio()
