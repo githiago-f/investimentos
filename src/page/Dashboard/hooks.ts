@@ -1,31 +1,40 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { AuthenticationContext } from 'context/AuthenticationContext';
-import { fixedInterestService } from 'services/fixedInterestService';
-import { RendaFixaResponseDTO } from '@domain/fixed-interest';
+import { portfolioService } from 'services/portfolioService';
+import { CarteiraResponseDTO } from '@domain/portifolio';
 
 export const useDashboardHooks = () => {
   const { user } = useContext(AuthenticationContext);
-  const service = useMemo(() => fixedInterestService(user), [user]);
+  const pService = useMemo(() => portfolioService(user), [user]);
 
-  const [fixedInterest, setfixedInterest] = useState([] as RendaFixaResponseDTO[]);
+  const [currentPortfolio, setCurrentPortfolio] = useState(null as CarteiraResponseDTO | null);
+
+  const [portfolios, setPortfolios] = useState([] as CarteiraResponseDTO[]);
 
   useEffect(() => {
     if(!user.id) {
       return;
     }
-    service.getfixedInterest()
-      .then(setfixedInterest);
-  }, [service]);
+    pService.searchPortfolio()
+      .then(setPortfolios)
+      .catch(console.error);
+  }, [pService]);
 
-  const totalFixedInterest = useMemo(() => {
-    return fixedInterest.reduce((val, i)=> i.preco + val, 0)
-      .toLocaleString('pt-br', {
-        currency: 'BRL',
-        style: 'currency'
-      });
-  }, [fixedInterest]);
+  const consolidatedAssets = useMemo(() => {
+    const totalAtPortfolios = portfolios
+      .map(({transacoes}) => transacoes.reduce((v, i)=>i.total+v, 0))
+      .reduce((v, i)=>v+i, 0);
+    return totalAtPortfolios;
+  }, [portfolios]);
+
+  const selectPortfolio = useCallback((portfolio)=> {
+    setCurrentPortfolio(portfolio);
+  }, [currentPortfolio]);
 
   return {
-    totalFixedInterest
+    portfolios,
+    consolidatedAssets,
+    currentPortfolio,
+    selectPortfolio
   };
 };

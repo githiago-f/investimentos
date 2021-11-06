@@ -5,6 +5,7 @@ declare module '@domain/portifolio' {
     id: number;
     ultimaAtualizacao: string;
     usuario: number;
+    transacoes: import('@domain/transaction').TransacaoResponseDTO[];
   };
 
   type CarteiraRequestDTO = {
