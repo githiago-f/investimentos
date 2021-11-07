@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container } from 'components/Container';
 import { withRouter } from 'react-router';
+import { Container } from 'components/Container';
 import { useDashboardHooks } from './hooks';
 import { toBRL } from 'utils/toBRL';
 import { Card } from 'components/Card';
