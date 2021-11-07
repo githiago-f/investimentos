@@ -1,24 +1,25 @@
 {
   "files": {
-    "main.css": "/investimentos/static/css/main.3872da48.chunk.css",
-    "main.js": "/investimentos/static/js/main.d4df2d57.chunk.js",
-    "main.js.map": "/investimentos/static/js/main.d4df2d57.chunk.js.map",
-    "runtime-main.js": "/investimentos/static/js/runtime-main.52e4211f.js",
-    "runtime-main.js.map": "/investimentos/static/js/runtime-main.52e4211f.js.map",
-    "static/js/2.2ff1502d.chunk.js": "/investimentos/static/js/2.2ff1502d.chunk.js",
-    "static/js/2.2ff1502d.chunk.js.map": "/investimentos/static/js/2.2ff1502d.chunk.js.map",
-    "static/js/3.3b350758.chunk.js": "/investimentos/static/js/3.3b350758.chunk.js",
-    "static/js/3.3b350758.chunk.js.map": "/investimentos/static/js/3.3b350758.chunk.js.map",
+    "main.css": "/investimentos/static/css/main.41b9bb6a.chunk.css",
+    "main.js": "/investimentos/static/js/main.639a75c9.chunk.js",
+    "main.js.map": "/investimentos/static/js/main.639a75c9.chunk.js.map",
+    "runtime-main.js": "/investimentos/static/js/runtime-main.5fa3ed12.js",
+    "runtime-main.js.map": "/investimentos/static/js/runtime-main.5fa3ed12.js.map",
+    "static/js/2.290788b5.chunk.js": "/investimentos/static/js/2.290788b5.chunk.js",
+    "static/js/2.290788b5.chunk.js.map": "/investimentos/static/js/2.290788b5.chunk.js.map",
+    "static/js/3.670fb574.chunk.js": "/investimentos/static/js/3.670fb574.chunk.js",
+    "static/js/3.670fb574.chunk.js.map": "/investimentos/static/js/3.670fb574.chunk.js.map",
     "index.html": "/investimentos/index.html",
-    "static/css/main.3872da48.chunk.css.map": "/investimentos/static/css/main.3872da48.chunk.css.map",
-    "static/js/2.2ff1502d.chunk.js.LICENSE.txt": "/investimentos/static/js/2.2ff1502d.chunk.js.LICENSE.txt",
+    "static/css/main.41b9bb6a.chunk.css.map": "/investimentos/static/css/main.41b9bb6a.chunk.css.map",
+    "static/js/2.290788b5.chunk.js.LICENSE.txt": "/investimentos/static/js/2.290788b5.chunk.js.LICENSE.txt",
     "static/media/interest-rate.78adf9ed.png": "/investimentos/static/media/interest-rate.78adf9ed.png",
-    "static/media/investimento.png": "/investimentos/static/media/investimento.32f2c201.png"
+    "static/media/investimento.png": "/investimentos/static/media/investimento.32f2c201.png",
+    "static/media/plus.27062e32.svg": "/investimentos/static/media/plus.27062e32.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.52e4211f.js",
-    "static/js/2.2ff1502d.chunk.js",
-    "static/css/main.3872da48.chunk.css",
-    "static/js/main.d4df2d57.chunk.js"
+    "static/js/runtime-main.5fa3ed12.js",
+    "static/js/2.290788b5.chunk.js",
+    "static/css/main.41b9bb6a.chunk.css",
+    "static/js/main.639a75c9.chunk.js"
   ]
 }
