@@ -1,11 +1,11 @@
 import React from 'react';
-import plusSymbol from '../../assets/img/plus-symbol-button.png';
+import plusSymbol from '../../assets/img/plus.svg';
 
 type Props = {
-  onClick: () => void
+  onClick?: () => void
 }
 
-export const AddCard: React.FC<Props> = ({ onClick }) => (
+const AddCard: React.FC<Props> = ({ onClick }) => (
   <button
     onClick={onClick}
     className="bg-gray-50 py-5 pr-5 rounded-md flex hover:bg-gray-300 cursor-pointer"
@@ -17,3 +17,9 @@ export const AddCard: React.FC<Props> = ({ onClick }) => (
     </div>
   </button>
 );
+
+AddCard.defaultProps = {
+  onClick: () => {}
+};
+
+export { AddCard };

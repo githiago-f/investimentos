@@ -7,6 +7,7 @@ import { Card } from 'components/Card';
 import ir from 'assets/img/interest-rate.png';
 import { PortfolioSelectedContext } from 'context/PortfolioSelectedContext';
 import { AddCard } from 'components/AddCard';
+import { Fab } from 'components/Fab';
 
 const Dashboard = () => {
   const data = useDashboardHooks();
@@ -31,8 +32,9 @@ const Dashboard = () => {
               key={idx}
             />
           ))}
-          <AddCard onClick={()=> {}}/>
+          <AddCard/>
         </div>
+        <Fab/>
       </PortfolioSelectedContext.Provider>
     </Container>
   );

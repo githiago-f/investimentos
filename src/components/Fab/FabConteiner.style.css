@@ -1,0 +1,19 @@
+.fab-context-button {
+  @apply
+    py-1
+    px-2
+    text-right
+    font-semibold
+    hover:bg-gray-100;
+}
+
+.fab-context {
+  @apply
+    flex
+    flex-col
+    bg-white
+    rounded-md
+    p-1
+    shadow-md
+    mb-3;
+}
