@@ -1,4 +1,6 @@
+import { FixedInterest } from 'components/FixedInterest';
 import { FormDialog } from 'components/FormDialog';
+import { VariableInterest } from 'components/VariableInterest';
 import React, { useState } from 'react';
 import './FabConteiner.style.css';
 
@@ -7,20 +9,23 @@ type Props = {
 }
 
 const FabContext: React.FC<Props> = ({ hidden }) => {
-  const [rvOpen, setRVOpen] = useState(false);
-  const [rfOpen, setRFOpen] = useState(false);
+  const [viOpen, setVIOpen] = useState(false);
+  const [fiOpen, setFIOpen] = useState(false);
   return (
     <>
-      <FormDialog open={rvOpen} onClose={() => setRVOpen(false)} formName="Renda Variável">
-        <h3>Teste</h3>
+      <FormDialog open={viOpen} onClose={() => setVIOpen(false)} formName="Renda Variável">
+        <VariableInterest callClose={() => setVIOpen(false)}/>
+      </FormDialog>
+      <FormDialog open={fiOpen} onClose={() => setFIOpen(false)} formName="Renda Fixa">
+        <FixedInterest/>
       </FormDialog>
       <div className={hidden ? 'invisible' : 'fab-context'} hidden={hidden}>
         <button
-          onClick={() => setRVOpen(true)}
+          onClick={() => setVIOpen(true)}
           className="fab-context-button"
         >Renda Variável</button>
         <button
-          onClick={() => setRFOpen(true)}
+          onClick={() => setFIOpen(true)}
           className="fab-context-button"
         >Renda fixa</button>
       </div>

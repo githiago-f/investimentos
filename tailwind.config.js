@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 module.exports = {
   purge: [
     './src/**/*.{ts,tsx}',
@@ -11,5 +12,7 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
-}
+  plugins: [
+    require('@tailwindcss/forms')
+  ],
+};

@@ -1,19 +1,24 @@
 import { UsuarioResponseDTO } from '@domain/user';
 import { RendaVariavelRequestDTO, RendaVariavelResponseDTO } from '@domain/variable-interest';
 import { axios } from 'config/axios.setup';
+import { InvalidArgumentError } from 'utils/errors/InvalidArgumentError';
+import isEmpty from 'validator/lib/isEmpty';
+import isDecimal from 'validator/lib/isDecimal';
 
 export const variableInterestService = (user: UsuarioResponseDTO) => {
   const createVariableInterest = async (data: Partial<RendaVariavelRequestDTO>) => {
-    try {
-      const response = await axios.post<RendaVariavelResponseDTO>('/', {
-        ...data,
-        usuario: user.id
-      });
-      return response.data;
-    }catch(e) {
-      console.log(e);
-      return null;
+    if(isEmpty((data.ticker || '').trim())) {
+      throw new InvalidArgumentError('Ticker não devia estar vazio');
     }
+    if(!isDecimal(String(data.cotacao || ''))) {
+      throw new InvalidArgumentError('Cotação deve ser um número real');
+    }
+    const response = await axios.post<RendaVariavelResponseDTO>('/api/rendavariavel', {
+      ...data,
+      cotacao: data.cotacao,
+      usuario: user.id
+    });
+    return response.data;
   };
 
   return {
