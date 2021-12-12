@@ -10,7 +10,8 @@ export const variableInterestService = (user: UsuarioResponseDTO) => {
     if(isEmpty((data.ticker || '').trim())) {
       throw new InvalidArgumentError('Ticker não devia estar vazio');
     }
-    if(!isDecimal(String(data.cotacao || ''))) {
+    const cotacao = String(data.cotacao).trim();
+    if(isEmpty(cotacao) || !isDecimal(cotacao)) {
       throw new InvalidArgumentError('Cotação deve ser um número real');
     }
     const response = await axios.post<RendaVariavelResponseDTO>('/api/rendavariavel', {

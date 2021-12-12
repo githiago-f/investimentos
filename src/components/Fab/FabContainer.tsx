@@ -17,7 +17,7 @@ const FabContext: React.FC<Props> = ({ hidden }) => {
         <VariableInterest callClose={() => setVIOpen(false)}/>
       </FormDialog>
       <FormDialog open={fiOpen} onClose={() => setFIOpen(false)} formName="Renda Fixa">
-        <FixedInterest/>
+        <FixedInterest onClose={() => setFIOpen(false)} />
       </FormDialog>
       <div className={hidden ? 'invisible' : 'fab-context'} hidden={hidden}>
         <button

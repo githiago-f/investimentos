@@ -11,8 +11,12 @@ const MEDIA_DIAS_MES = 30.4375;
 
 export const fixedInterestService = (user?: UsuarioResponseDTO) => {
   const getfixedInterest = async () => {
+    if(!user?.id) {
+      window.location.reload();
+      return [];
+    }
     try {
-      const { data } = await axios.get<Page<RendaFixaResponseDTO>>(`/api/rendafixa/${user?.id||0}`);
+      const { data } = await axios.get<Page<RendaFixaResponseDTO>>(`/api/rendafixa/${user?.id}`);
       return data.content;
     } catch (e) {
       console.log(e);

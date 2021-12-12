@@ -29,6 +29,7 @@ const VariableInterest: FC<Props> = (props) => {
       )}
 
       <button type="submit" disabled={loading}>Salvar</button>
+      <button type="reset" disabled={loading} onClick={props.callClose}>Cancelar</button>
     </form>
   );
 };

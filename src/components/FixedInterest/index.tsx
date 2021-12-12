@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 import { useFixedInterestHooks } from './hooks';
 
-type Props = {};
+type Props = {
+  onClose: () => void
+};
 
-const FixedInterest: FC<Props> = () => {
-  const {formRef, onSubmit, error} = useFixedInterestHooks();
+const FixedInterest: FC<Props> = (props) => {
+  const {formRef, onSubmit, error, loading} = useFixedInterestHooks(props.onClose);
   return (
     <form action="#" ref={formRef as any} onSubmit={onSubmit}>
       <div className="mt-5">
@@ -31,9 +33,14 @@ const FixedInterest: FC<Props> = () => {
         <p className="text-red-600">{error.message}</p>
       )}
 
-      <button type="submit">Salvar</button>
+      <button type="submit" disabled={loading}>Salvar</button>
+      <button type="reset" disabled={loading} onClick={props.onClose}>Cancelar</button>
     </form>
   );
+};
+
+FixedInterest.defaultProps = {
+  onClose: () => {}
 };
 
 export { FixedInterest };

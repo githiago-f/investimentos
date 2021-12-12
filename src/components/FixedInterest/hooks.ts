@@ -9,7 +9,7 @@ const dateFormat = Intl.DateTimeFormat('pt-BR', {
   timeZone: 'america/sao_paulo'
 });
 
-export const useFixedInterestHooks = () => {
+export const useFixedInterestHooks = (close: () => void) => {
   const { user } = useContext(AuthenticationContext);
   const formRef = useRef<HTMLFormElement>();
   const {current: fixedInterest } = useRef(fixedInterestService(user));
@@ -30,6 +30,7 @@ export const useFixedInterestHooks = () => {
       rentabilidadeMensal: formData?.['rentabilidadeMensal'].value,
       vencimento: dateFormat.format(dueDate)
     })
+      .then(e => close())
       .catch(setError)
       .finally(() => setLoading(false));
 

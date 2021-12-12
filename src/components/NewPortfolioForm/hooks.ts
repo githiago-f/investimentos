@@ -1,11 +1,11 @@
 import { AuthenticationContext } from 'context/AuthenticationContext';
 import { FormEventHandler, useCallback, useContext, useEffect, useRef, useState } from 'react';
-import { variableInterestService } from 'services/variableInterestService';
+import { portfolioService } from 'services/portfolioService';
 
-export const useVariableInterestFormHooks = (callClose?: () => void) => {
+export const useNewPortifolioHooks = (callClose?: () => void) => {
   const { user } = useContext(AuthenticationContext);
   const formRef = useRef<HTMLFormElement>();
-  const { current: variableInterest } = useRef(variableInterestService(user));
+  const { current: portfolio } = useRef(portfolioService(user));
   const [error, setError] = useState(null as Error | null);
   const [loading, setLoading] = useState(false);
 
@@ -21,11 +21,11 @@ export const useVariableInterestFormHooks = (callClose?: () => void) => {
     e.preventDefault();
     setLoading(true);
 
-    variableInterest.createVariableInterest({
-      cotacao: Number(formRef.current?.['cotacao'].value),
-      descricao: formRef.current?.['descricao'].value,
-      ticker: formRef.current?.['ticker'].value
-    })
+    if(!portfolio.createPortifolio) return;
+
+    const description = formRef.current?.['descricao'].value;
+
+    portfolio.createPortifolio(description)
       .then(callClose || (() => {}))
       .catch(setError)
       .finally(() => setLoading(false));
@@ -35,8 +35,8 @@ export const useVariableInterestFormHooks = (callClose?: () => void) => {
 
   return {
     formRef,
-    onSubmit,
     error,
-    loading
+    loading,
+    onSubmit
   };
 };

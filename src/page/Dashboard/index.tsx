@@ -3,14 +3,17 @@ import { withRouter } from 'react-router';
 import { Container } from 'components/Container';
 import { useDashboardHooks } from './hooks';
 import { toBRL } from 'utils/toBRL';
-import { Card } from 'components/Card';
+import { FixedInterestCard, PortfolioCard } from 'components/Card';
 import ir from 'assets/img/interest-rate.png';
 import { PortfolioSelectedContext } from 'context/PortfolioSelectedContext';
 import { AddCard } from 'components/AddCard';
 import { Fab } from 'components/Fab';
+import { NewPortfolioForm } from 'components/NewPortfolioForm';
+import { FormDialog } from 'components/FormDialog';
 
 const Dashboard = () => {
   const data = useDashboardHooks();
+  const toggleOpen = () => data.setOpen(!data.open);
 
   return (
     <Container>
@@ -19,11 +22,11 @@ const Dashboard = () => {
         <br/>
         {toBRL(data.consolidatedAssets)}
       </h2>
-      <h3 className="text-xl my-5 font-bold">Carteiras</h3>
       <PortfolioSelectedContext.Provider value={{portfolio: data.currentPortfolio}}>
+        <h3 className="text-xl my-5 font-bold">Carteiras</h3>
         <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
           {data.portfolios.map((i, idx) => (
-            <Card
+            <PortfolioCard
               portfolio={i}
               icon={ir}
               title={i.descricao}
@@ -32,7 +35,16 @@ const Dashboard = () => {
               key={idx}
             />
           ))}
-          <AddCard/>
+          <FormDialog formName="Nova carteira" onClose={toggleOpen} open={data.open}>
+            <NewPortfolioForm onClose={toggleOpen}/>
+          </FormDialog>
+          <AddCard onClick={toggleOpen}/>
+        </div>
+        <h3 className="text-xl my-5 font-bold">Renda Fixa</h3>
+        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
+          {data.fixedInterestList?.map(i => (
+            <FixedInterestCard fixedInterest={i} key={i.id} />
+          ))}
         </div>
         <Fab/>
       </PortfolioSelectedContext.Provider>
