@@ -39,15 +39,11 @@ export const useDashboardHooks = () => {
     return totalAtPortfolios + totalAtFixedInterest;
   }, [portfolios]);
 
-  const selectPortfolio = useCallback((portfolio)=> {
-    setCurrentPortfolio(portfolio);
-  }, [currentPortfolio]);
-
   return {
     portfolios,
     consolidatedAssets,
     currentPortfolio,
-    selectPortfolio,
+    selectPortfolio: setCurrentPortfolio,
     open,
     setOpen,
     fixedInterestList
